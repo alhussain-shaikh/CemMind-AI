@@ -48,6 +48,26 @@ CemMind AI integrates:
 
 ---
 
+---
+
+# ✅ Prototype Roadmap for You
+
+1. **Simulate data**: Write a Python script to generate plant-like data.
+2. **Stream/upload data**: Push into Firebase/BigQuery as if from sensors.
+3. **AI layer**: Use Gemini/Vertex AI to generate insights & optimization suggestions.
+4. **UI**: Build a simple dashboard + chatbot assistant (your Flutter app is perfect here).
+5. **Demo**: Show scenarios where AI stabilizes operations, optimizes energy, or balances AF use.
+
+---
+
+⚡ Essentially: *Fake the sensors, but keep the AI + dashboard real*.
+That way, stakeholders see **the full loop working**, just with a **synthetic digital twin** instead of a real cement plant.
+
+---
+## 🏗 System Architecture
+
+![CemMind AI Architecture](docs/architecture.png)
+
 ## 📂 Repo Structure
 
 ```
