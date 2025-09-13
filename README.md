@@ -50,7 +50,7 @@ CemMind AI integrates:
 
 ---
 
-# ✅ Prototype Roadmap for You
+# ✅ Prototype Roadmap
 
 1. **Simulate data**: Write a Python script to generate plant-like data.
 2. **Stream/upload data**: Push into Firebase/BigQuery as if from sensors.
