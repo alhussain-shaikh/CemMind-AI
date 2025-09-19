@@ -1,3 +1,7 @@
 venv/
 keys/
 .env
+venv311/
+services/__pycache__/
+services/cloud/__pycache__/
+simulation/__pycache__/

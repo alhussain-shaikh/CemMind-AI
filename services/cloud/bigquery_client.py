@@ -55,7 +55,7 @@ def query_sample(project, dataset_id, table_id):
       CO2_emission_kgpt
     FROM `{project}.{dataset_id}.{table_id}`
     ORDER BY ts DESC
-    LIMIT 200
+    LIMIT 500
     """
     df = client.query(sql).to_dataframe()
     print(df)
