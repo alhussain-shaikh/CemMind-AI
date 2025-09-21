@@ -1,14 +1,15 @@
 from google.cloud import bigquery
 from dotenv import load_dotenv
+import streamlit as st
 import os
 
 # load .env file
 load_dotenv()
 
-PROJECT = os.getenv("PROJECT")
-DATASET = os.getenv("DATASET")
-TABLE = os.getenv("TABLE")
-GCS_URI = os.getenv("GCS_URI")
+PROJECT = st.secrets["PROJECT"]
+DATASET = st.secrets["DATASET"]
+TABLE = st.secrets["TABLE"]
+GCS_URI = st.secrets["GCS_URI"]
 
 def load_csv_from_gcs(project, dataset_id, table_id, gcs_uri, write_disposition="WRITE_APPEND"):
     client = bigquery.Client(project=project)
