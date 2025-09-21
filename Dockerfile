@@ -17,7 +17,7 @@ COPY . .
 # Install the project in editable mode
 RUN pip install -e .
 
-EXPOSE 8501
+EXPOSE 8080
 
 ENV STREAMLIT_SERVER_HEADLESS=true
 
