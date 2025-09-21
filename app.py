@@ -1,6 +1,9 @@
 import time
+import json
+import tempfile
 import streamlit as st
 import pandas as pd
+from dotenv import load_dotenv
 from simulation.batch_generator import generate_data, upload_to_gcs
 from services.cloud.bigquery_client import load_csv_from_gcs, query_sample
 from dashboard.kpis import render_kpis
