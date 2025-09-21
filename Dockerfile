@@ -17,8 +17,13 @@ COPY . .
 # Install the project in editable mode
 RUN pip install -e .
 
+# Expose Cloud Run port
 EXPOSE 8080
 
+# Streamlit environment variables
 ENV STREAMLIT_SERVER_HEADLESS=true
+ENV STREAMLIT_SERVER_ENABLE_CORS=false
+ENV STREAMLIT_SERVER_PORT=$PORT
 
-CMD ["streamlit", "run", "app.py"] 
+# Run Streamlit on the Cloud Run port
+CMD ["streamlit", "run", "app.py", "--server.port=8080", "--server.address=0.0.0.0"]
