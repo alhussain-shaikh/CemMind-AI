@@ -1,5 +1,6 @@
 from google.cloud import bigquery
 from dotenv import load_dotenv
+from services.cloud import get_credentials
 import os
 
 # load .env file
@@ -9,9 +10,10 @@ PROJECT = os.getenv("PROJECT")
 DATASET = os.getenv("DATASET")
 TABLE = os.getenv("TABLE")
 GCS_URI = os.getenv("GCS_URI")
+gcp_credentials = get_credentials()
 
 def load_csv_from_gcs(project, dataset_id, table_id, gcs_uri, write_disposition="WRITE_APPEND"):
-    client = bigquery.Client(project=project)
+    client = bigquery.Client(project=project,credentials=gcp_credentials)
 
     dataset_ref = client.dataset(dataset_id)
     table_ref = dataset_ref.table(table_id)
@@ -44,7 +46,7 @@ def load_csv_from_gcs(project, dataset_id, table_id, gcs_uri, write_disposition=
     print(f"Loaded {destination_table.num_rows} rows into {dataset_id}.{table_id}")
 
 def query_sample(project, dataset_id, table_id):
-    client = bigquery.Client(project=project)
+    client = bigquery.Client(project=project,credentials=gcp_credentials)
     sql = f"""
     SELECT
       TIMESTAMP(timestamp) AS ts,

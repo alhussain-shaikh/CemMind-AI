@@ -4,7 +4,7 @@ import datetime as dt
 from google.cloud import storage
 from dotenv import load_dotenv
 import os
-
+from services.cloud import get_credentials
 # Load .env file
 load_dotenv()
 
@@ -13,6 +13,7 @@ GCS_BUCKET = os.getenv("GCS_BUCKET")
 GCS_DEST_PREFIX = os.getenv("GCS_DEST_PREFIX")
 LOCAL_CSV = os.getenv("LOCAL_CSV")
 NUM_ROWS = int(os.getenv("NUM_ROWS", 1440))  # fallback 1440 if missing
+gcp_credentials=get_credentials
 
 def generate_data(n=NUM_ROWS):
     start = dt.datetime.utcnow()
@@ -32,7 +33,7 @@ def generate_data(n=NUM_ROWS):
 
 
 def upload_to_gcs(local_file, bucket_name, dest_prefix):
-    client = storage.Client()
+    client = storage.Client(credentials=gcp_credentials)
     bucket = client.bucket(bucket_name)
     dest_blob = f"{dest_prefix}/{os.path.basename(local_file)}"
     blob = bucket.blob(dest_blob)
