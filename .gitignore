@@ -9,3 +9,4 @@ services/dashboard/
 cemmind_ai.egg-info
 __pycache__
 .vscode/
+sec.toml

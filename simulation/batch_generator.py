@@ -10,10 +10,10 @@ import os
 load_dotenv()
 
 # Read configs
-GCS_BUCKET = st.secrets["GCS_BUCKET"]
-GCS_DEST_PREFIX = st.secrets["GCS_DEST_PREFIX"]
-LOCAL_CSV = st.secrets["LOCAL_CSV"]
-NUM_ROWS = int(st.secrets["NUM_ROWS"], 1440) # fallback 1440 if missing
+GCS_BUCKET = os.getenv("GCS_BUCKET")
+GCS_DEST_PREFIX = os.getenv("GCS_DEST_PREFIX")
+LOCAL_CSV = os.getenv("LOCAL_CSV")
+NUM_ROWS = int(os.getenv("NUM_ROWS"), 1440) # fallback 1440 if missing
 
 def generate_data(n=NUM_ROWS):
     start = dt.datetime.utcnow()
